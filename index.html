@@ -336,7 +336,7 @@
             <p style="font-size: 1.1rem;">Convierte tu creatividad en arte floral</p>
             <br>
             <div class="imagen-destacada">
-                <img src="profe.JPG" alt="Flores en Tela" class="imagen-circular lazy-load"  >
+                <img data-src="profe.JPG" alt="Flores en Tela" class="imagen-circular"  >
             </div>
             <p><i class="fas fa-chalkboard-teacher"></i> <span style="font-weight: 900;color: #e07a5f;">CURSO VIRTUAL </span> | <i class="fas fa-mobile-alt"></i> Acceso Vitalicio</p>
             <br>
@@ -383,25 +383,25 @@
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
         <div class="glass-card" data-aos="zoom-in">
-            <img  class="lazy-load"  src="1.jpg" alt="Estructura de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+            <img    data-src="1.jpg" alt="Estructura de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
             <h3 style="color: var(--color-acento); text-align: left;">Estructura Base</h3>
             <p style="text-align: left;">Aprenderás a crear soportes firmes y duraderos para tus flores</p>
         </div>
         
         <div class="glass-card" data-aos="zoom-in">
-            <img  class="lazy-load"  src="1a.jpeg" alt="Pistilos de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+            <img    data-src="1a.jpeg" alt="Pistilos de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
             <h3 style="color: var(--color-acento); text-align: left;">Pistilos Realistas</h3>
             <p style="text-align: left;">Técnicas para crear centros de flores con detalles profesionales</p>
         </div>
         
         <div class="glass-card" data-aos="zoom-in">
-            <img   class="lazy-load"  src="2.png" alt="Pétalos de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+            <img   data-src="2.png" alt="Pétalos de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
             <h3 style="color: var(--color-acento); text-align: left;">Pétalos Variados</h3>
             <p style="text-align: left;">Domina diferentes formas y texturas para crear flores únicas</p>
         </div>
         
         <div class="glass-card" data-aos="zoom-in">
-            <img  class="lazy-load"  src="4.jpeg" alt="Acabados de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+            <img  data-src="4.jpeg" alt="Acabados de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
             <h3 style="color: var(--color-acento); text-align: center;">Acabados Profesionales</h3>
             <p style="text-align: center;">Técnicas de endurecimiento y decoración para resultados perfectos</p>
         </div>
@@ -583,27 +583,39 @@
     </script>
 
   <!-- Script para Lazy Loading de imágenes -->
-  <script>
-   document.addEventListener("DOMContentLoaded", function () {
-    const lazyImages = document.querySelectorAll(".lazy-load");
-
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Seleccionar todas las imágenes de la página
+    const todasLasImagenes = document.querySelectorAll('img');
+    
+    // Configurar el Intersection Observer
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.src = img.getAttribute("data-src");
-                img.removeAttribute("data-src");
+                // Cargar la imagen solo si tiene data-src
+                if(img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
                 observer.unobserve(img);
             }
         });
+    }, {
+        rootMargin: '0px 0px 100px 0px' // Carga 100px antes de entrar en la vista
     });
 
-    lazyImages.forEach(img => observer.observe(img));
+    // Observar todas las imágenes
+    todasLasImagenes.forEach(img => {
+        // Solo observar imágenes que tengan data-src
+        if(img.dataset.src) {
+            // Establecer un placeholder opcional
+            if(!img.src) img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+            observer.observe(img);
+        }
+    });
 });
-
-     
 </script>
-
 
 
 </body>
