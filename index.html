@@ -336,7 +336,7 @@
             <p style="font-size: 1.1rem;">Convierte tu creatividad en arte floral</p>
             <br>
             <div class="imagen-destacada">
-                <img src="profe.JPG" alt="Flores en Tela" class="imagen-circular">
+                <img src="profe.JPG" alt="Flores en Tela" class="imagen-circular lazy-load "  >
             </div>
             <p><i class="fas fa-chalkboard-teacher"></i> <span style="font-weight: 900;color: #e07a5f;">CURSO VIRTUAL </span> | <i class="fas fa-mobile-alt"></i> Acceso Vitalicio</p>
             <br>
@@ -383,25 +383,25 @@
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
         <div class="glass-card" data-aos="zoom-in">
-            <img src="1.jpg" alt="Estructura de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+            <img  class="lazy-load "  src="1.jpg" alt="Estructura de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
             <h3 style="color: var(--color-acento); text-align: left;">Estructura Base</h3>
             <p style="text-align: left;">Aprenderás a crear soportes firmes y duraderos para tus flores</p>
         </div>
         
         <div class="glass-card" data-aos="zoom-in">
-            <img src="1a.jpeg" alt="Pistilos de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+            <img  class="lazy-load "  src="1a.jpeg" alt="Pistilos de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
             <h3 style="color: var(--color-acento); text-align: left;">Pistilos Realistas</h3>
             <p style="text-align: left;">Técnicas para crear centros de flores con detalles profesionales</p>
         </div>
         
         <div class="glass-card" data-aos="zoom-in">
-            <img src="2.png" alt="Pétalos de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+            <img   class="lazy-load "  src="2.png" alt="Pétalos de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
             <h3 style="color: var(--color-acento); text-align: left;">Pétalos Variados</h3>
             <p style="text-align: left;">Domina diferentes formas y texturas para crear flores únicas</p>
         </div>
         
         <div class="glass-card" data-aos="zoom-in">
-            <img src="4.jpeg" alt="Acabados de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+            <img  class="lazy-load "  src="4.jpeg" alt="Acabados de flores" style="width: 180px; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
             <h3 style="color: var(--color-acento); text-align: center;">Acabados Profesionales</h3>
             <p style="text-align: center;">Técnicas de endurecimiento y decoración para resultados perfectos</p>
         </div>
@@ -584,72 +584,24 @@
 
   <!-- Script para Lazy Loading de imágenes -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Verificar si el navegador soporta Intersection Observer
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    // Si la imagen es visible en el viewport
-                    if (entry.isIntersecting) {
-                        const image = entry.target;
-                        
-                        // Si la imagen tiene un atributo data-src, cargamos la imagen
-                        if (image.getAttribute('data-src')) {
-                            image.src = image.getAttribute('data-src');
-                            image.removeAttribute('data-src');
-                        }
-                        
-                        // Dejar de observar la imagen una vez cargada
-                        observer.unobserve(image);
-                    }
-                });
-            }, {
-                // Configuración del observer: cargar cuando la imagen esté a 100px de entrar en el viewport
-                rootMargin: '100px 0px',
-                threshold: 0.01
-            });
-            
-            // Seleccionar todas las imágenes y aplicar lazy loading
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                // Si la imagen ya tiene src, lo movemos a data-src
-                if (img.src && !img.src.includes('data:image')) {
-                    img.setAttribute('data-src', img.src);
-                    // Establecer un placeholder o una imagen muy pequeña
-                    img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
-                }
-                
-                // Observar la imagen
-                imageObserver.observe(img);
-            });
-        } else {
-            // Fallback para navegadores que no soportan Intersection Observer
-            const images = document.querySelectorAll('img[data-src]');
-            
-            function lazyLoadFallback() {
-                const scrollTop = window.pageYOffset;
-                
-                images.forEach(img => {
-                    if (img.offsetTop < window.innerHeight + scrollTop) {
-                        img.src = img.getAttribute('data-src');
-                        img.removeAttribute('data-src');
-                    }
-                });
-                
-                if (images.length === 0) { 
-                    document.removeEventListener('scroll', lazyLoadFallback);
-                    window.removeEventListener('resize', lazyLoadFallback);
-                    window.removeEventListener('orientationChange', lazyLoadFallback);
-                }
+   document.addEventListener("DOMContentLoaded", function () {
+    const lazyImages = document.querySelectorAll(".lazy-load");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.getAttribute("data-src");
+                img.removeAttribute("data-src");
+                observer.unobserve(img);
             }
-            
-            // Eventos para el fallback
-            document.addEventListener('scroll', lazyLoadFallback);
-            window.addEventListener('resize', lazyLoadFallback);
-            window.addEventListener('orientationChange', lazyLoadFallback);
-            lazyLoadFallback(); // Ejecutar una vez al cargar
-        }
+        });
     });
+
+    lazyImages.forEach(img => observer.observe(img));
+});
+
+     
 </script>
 
 
