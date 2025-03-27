@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,7 +29,7 @@
         /* Paleta neomórfica con acentos florales */
         :root {
             --color-base: #f5f7f6;
-            --color-acento: #e07a5f;
+            --color-acento: #960101;
             --color-texto: #3d4a3e;
             --shadow-ext: 12px 12px 24px #e0e2e1,
                          -12px -12px 24px #ffffff;
@@ -79,13 +80,13 @@
         }
 
         .imagen-circular {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+            border-radius: 10%; 
             object-fit: cover;
             object-position: top;
             box-shadow: var(--shadow-ext);
-            border: 3px solid var(--color-texto);
+            border: 3px solid var(--color-acento);
         }
 
         /* Botones neomórficos */
@@ -339,10 +340,10 @@ src="https://www.facebook.com/tr?id=630202806380275&ev=PageView&noscript=1"
             <div class="imagen-destacada">
                 <img data-src="profe.JPG" alt="Flores en Tela" class="imagen-circular"  >
             </div>
-            <p><i class="fas fa-chalkboard-teacher"></i> <span style="font-weight: 900;color: #e07a5f;">CURSO VIRTUAL </span> | <i class="fas fa-mobile-alt"></i> Acceso Vitalicio</p>
+            <p><i class="fas fa-chalkboard-teacher"></i> <span style="font-weight: 900;color: #960101;">CURSO VIRTUAL </span> | <i class="fas fa-mobile-alt"></i> Acceso Vitalicio</p>
             <br>
             <p style="font-size: 0.8rem;">Desliza para más información</p>
-            <i class="fa-solid fa-chevron-down" style="font-size: 2.2rem; color:#e07a5f;" id="flechaabajo"></i>
+            <i class="fa-solid fa-chevron-down" style="font-size: 2.2rem; color:#960101;" id="flechaabajo"></i>
         </div>
     </header>
 
@@ -350,7 +351,7 @@ src="https://www.facebook.com/tr?id=630202806380275&ev=PageView&noscript=1"
     <section class="seccion">
         <h2>El proyecto es muy fácil de realizar, incluso si no tienes experiencia</h2>
         <br>
-        <h3 data-aos="fade-up">El curso es <span style="font-weight: 800;color: #e07a5f;">virtual</span> e incluye: </h3>
+        <h3 data-aos="fade-up">El curso es <span style="font-weight: 800;color: #960101;">virtual</span> e incluye: </h3>
         <br>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
@@ -379,7 +380,7 @@ src="https://www.facebook.com/tr?id=630202806380275&ev=PageView&noscript=1"
 
 
 <!-- Sección de ejemplos de flores -->
-<section class="seccion" data-aos="fade-up">
+<section class="seccion" >
     <h2 style="text-align: left; margin-bottom: 2rem;">Lo que aprenderás en este curso</h2>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
@@ -415,12 +416,11 @@ src="https://www.facebook.com/tr?id=630202806380275&ev=PageView&noscript=1"
     <section class="seccion seccion-diferenciada">
         <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
             <div class="glass-card">
-                <h2>¡Los materiares son súper fáciles de conseguir!</h2>
+                <h2> <i class="fa-solid fa-hand-holding-heart fa-1x" style="color: var(--color-acento);"></i> Todo lo que necesitas lo consigues fácilmente:</h2>
                 <br>
                 <div class="glass-card facilidad-curso" data-aos="fade-up">
                     <div class="ventaja">
-                        <h3><i class="fa-solid fa-hand-holding-heart fa-1x" style="color: var(--color-acento);"></i> Todo lo que necesitas lo consigues fácilmente:</h3>
-                        <br>
+
                         <ul style="list-style: none;">
                             <li>🧵 Telas, en almacenes de telas.</li>
                             <li>🔌 Alambres, en ferreterías o tiendas de manualidades.</li>
@@ -443,12 +443,13 @@ src="https://www.facebook.com/tr?id=630202806380275&ev=PageView&noscript=1"
     
 
     <!-- Sección de emprendimiento con precio -->
-    <section class="seccion seccion-emprende" >
+    <section class="seccion" >
         <h2>¿Te imaginas decorar tu hogar o emprender con estas hermosas flores?</h2>
         <br>
         <div class="glass-card" style="margin: 0.1rem auto; max-width: 500px;color: #000;">
             <h3>El curso incluye:</h3>
-            <p>|📹 Video tutorial de 1 hora<br>|📄 15 moldes exclusivos<br>|✅ Asesoría personalizada<br>|✅ Acceso vitalicio<br>|📑 Lista de materiales<br>|🎁 OBSEQUIO IMPERDIBLE: curso del Ángel</p>
+            <br>
+            <p>📹 | Video tutorial de 1 hora<br>📄 | 15 moldes exclusivos<br>📑 | Lista de materiales<br>✅ | Asesoría personalizada<br>✅ | Acceso vitalicio<br><br>🎁 Obsequio imperdible: <br> <span style="color: #960101;">Inscríbete hoy y lleva el curso del Ángel</span></p>
             
             <!-- Precio con descuento -->
             <div class="precio">
@@ -473,8 +474,8 @@ src="https://www.facebook.com/tr?id=630202806380275&ev=PageView&noscript=1"
             <div style="background: rgba(224, 122, 95, 0.1); padding: 1rem; border-radius: 10px; margin: 1rem 0;">
                 <p style="font-weight: bold; color: var(--color-acento);">✅ ENTREGA INMEDIATA</p>
                 <p>Una vez realizada tu compra, recibirás TODO el material en tu correo electrónico de forma inmediata.</p>
-           <br>
-                <p>🗺️ Si estás en un país diferente a 🇲🇽 🇨🇴 Toca el botón para ver el PRECIO EN TU MONEDA </p>
+           
+        
             </div>
 
 
@@ -543,7 +544,7 @@ src="https://www.facebook.com/tr?id=630202806380275&ev=PageView&noscript=1"
     <section class="seccion">
         <div class="glass-card" data-aos="flip-up" style="background: rgba(255,245,240,0.9);">
             <h2>Conoce a tu Maestra</h2>
-            <img src="/placeholder.svg?height=150&width=150" alt="Profesora de Flores en Tela" 
+            <img src="profe.JPG" alt="Profesora de Flores en Tela" 
                  style="width: 150px; border-radius: 50%; border: 3px solid white;">
                  
             <div style="display: flex; gap: 2rem; align-items: center; margin-top: 2rem;">
